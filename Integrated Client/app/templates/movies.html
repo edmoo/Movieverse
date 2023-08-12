@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if not results %}
+        <p>No Results Found</p>
+    {% else %}
+        <p>Click the links to see the relevant image.</p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Director</th>
+                    <th scope="col">Genre</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result['id'] }}</td>
+                        <td><a href="{{result['poster']}}" target="_blank_">{{ result['title'] }}</a></td>
+                        <td>{{ result['year'] }}</td>
+                        <td><a href="{{result['dPic']}}" target="_blank_">{{ result['director'] }}</a></td>
+                        <td>{{ result['genre'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

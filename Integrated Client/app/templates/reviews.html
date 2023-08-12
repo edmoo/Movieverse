@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if not results %}
+        <p>No Results Found</p>
+    {% else %}
+        <p>Click the movie title to see more info.</p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Movie</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Review</th>
+                    <th scope="col">Stars</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result['id'] }}</td>
+                        <td><a href="{{result['link']}}">{{ result['Movie'] }}</a></td>
+                        <td>{{ result['Author'] }}</td>
+                        <td>{{ result['Review'] }}</td>
+                        <td>{{ result['Stars'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
